@@ -23,10 +23,20 @@
                     <div class="col-md-6">
                         {{-- tanggal --}}
                         <div class="form-group">
-                            <label for="nama_lengkap">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama_lengkap"
+                            <label for="nama_karyawan">Nama Lengkap</label>
+                            <input type="text" class="form-control" name="nama_karyawan"
                                 placeholder="Masukan nama lengkap">
-
+                        </div>
+                        <!-- /.form-group -->
+                        {{-- Golongan --}}
+                        <div class="form-group">
+                            <label for="gol_id">Golongan</label>
+                            <select name="gol_id" class="form-control select2">
+                                <option value="">Pilih Golongan</option>
+                                @foreach ($gol as $item)
+                                    <option value="{{ $item->id }} "> {{ $item->golongan }} </option>
+                                @endforeach
+                            </select>
                         </div>
                         <!-- /.form-group -->
                         {{-- Tanggal Lahir --}}
@@ -43,16 +53,17 @@
                                 placeholder="masukan tempat lahir">
                         </div>
                         <!-- /.form-group -->
+
                     </div>
                     <!-- /.col -->
 
                     <div class="col-md-6">
                         {{-- Jabatan --}}
                         <div class="form-group">
-                            <label for="jabatan_id">Nama Jabatan</label>
+                            <label for="jabatan_id">Jabatan</label>
                             <select name="jabatan_id" class="form-control select2">
                                 <option value="">Pilih Jabatan</option>
-                                @foreach ($jabatans as $item)
+                                @foreach ($jabatan as $item)
                                     <option value="{{ $item->id }} "> {{ $item->jabatan }} </option>
                                 @endforeach
                             </select>
@@ -69,8 +80,8 @@
                         {{-- Nomor Telepon --}}
 
                         <div class="form-group">
-                            <label for="nomor telepon">Nomor Telepon</label>
-                            <input type="text" class="form-control" name="nomor telepon"
+                            <label for="nomor_telepon">Nomor Telepon</label>
+                            <input type="text" class="form-control" name="nomor_telepon"
                                 placeholder="masukan nomor telepon">
                         </div>
                         <!-- /.form-group -->

@@ -100,7 +100,7 @@
                         <img src="../../dist/img/people.jpg" class="img-circle elevation-3" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="{{url('/dashboard')}}" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="{{ url('/dashboard') }}" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
@@ -134,7 +134,15 @@
                                 </p>
                             </a>
                         </li>
-
+                        {{-- Gaji Golongan --}}
+                        <li class="nav-item">
+                            <a href="{{ url('gol') }}" class="nav-link">
+                                <i class="bi bi-person-rolodex"></i>
+                                <p>
+                                    Golongan Karyawan
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ url('order') }}" class="nav-link">
                                 <i class="nav-icon bi bi-basket"></i>

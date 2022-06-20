@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddJabatanIdFieldToKaryawansTable extends Migration
+class AddGolIdFieldToKaryawansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,6 @@ class AddJabatanIdFieldToKaryawansTable extends Migration
     {
         Schema::table('karyawans', function (Blueprint $table) {
             //
-            $table->foreignId('jabatan_id')->after('foto')->constrained()
-            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,8 +27,6 @@ class AddJabatanIdFieldToKaryawansTable extends Migration
     {
         Schema::table('karyawans', function (Blueprint $table) {
             //
-            $table->dropForeign('karyawans_jabatan_id_foreign');
-            $table->dropColumn('jabatan_id');
         });
     }
 }

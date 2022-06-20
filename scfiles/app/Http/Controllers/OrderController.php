@@ -15,6 +15,7 @@ class OrderController extends Controller
         return $orders;
     } */
     /* Show jumlah barang dibeli */
+
     public function getTotalItems(){
         $orders = DB::table('orders')->sum('items');
         return $orders;
@@ -37,9 +38,9 @@ class OrderController extends Controller
     public function index()
     {
         //
-        
+        $status = Status::all();
         $orders = Order::all();
-        return view('order.index')->with('orders',$orders);
+        return view('order.index')->with('orders',$orders)->with('status',$status);
     }
 
     /**

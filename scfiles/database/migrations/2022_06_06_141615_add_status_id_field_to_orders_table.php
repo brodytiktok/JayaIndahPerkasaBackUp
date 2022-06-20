@@ -15,7 +15,7 @@ class AddStatusIdFieldToOrdersTable extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->foreignId('statuse_id')->after('metode')->constrained()
+            $table->foreignId('statuse_id')->nullable()->after('metode')->constrained()
             ->onDelete('cascade')->onUpdate('cascade');
         });
     }

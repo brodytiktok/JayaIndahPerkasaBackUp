@@ -3,6 +3,34 @@
 @section('title', 'Halaman Order')
 
 @section('content')
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Kode Status</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th style="width: 100px">Id Status</th>
+                                <th>Task</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($status as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->status }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Daftar Order</h3>

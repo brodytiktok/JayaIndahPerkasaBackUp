@@ -5,7 +5,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Daftar Karyawan</h3>
+            <h3 class="card-title">Daftar Personal Karyawan</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -34,13 +34,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($karyawans as $data)
+                    @foreach ($karyawan as $data)
                         <tr>
                             <td><img src="{{ asset('storage/' . $data->foto) }}" width="40px" height="50px"></td>
-                            <td><a href="{{ url('karyawan/' . $data->id) }}"> {{ $data->nama_lengkap }}</a></td>
+                            <td><a href="{{ url('karyawan/' . $data->id) }}"> {{ $data->nama_karyawan }}</a></td>
                             <td>{{ $data->tanggal_lahir }}</td>
-                            <td>{{ $data->jabatan->jabatan }}</td>
                             <td>{{ $data->tempat_lahir }}</td>
+
                             <td>{{ $data->alamat_lengkap }}</td>
                             <td>{{ $data->nomor_telepon }}</td>
                             <td>
@@ -84,6 +84,40 @@
             </div>
         </div>
     </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Gaji Karyawan</h3>
+        </div>
+
+        <div class="card-body">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Nama Karyawan</th>
+                        <th>Jabatan</th>
+                        <th>Golongan</th>
+                        <th>Penghasilan</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($karyawan as $data)
+                        <tr>
+                            <td><a href="{{ url('karyawan/' . $data->id) }}"> {{ $data->nama_karyawan }}</a></td>
+                            <td>{{ $data->jabatan->jabatan }}</td>
+                            <td>{{ $data->gol->golongan }}</td>
+                            <td>{{ $data->gol->penghasilan }}</td>
+                            <td>
+                                <a href="{{ url('karyawan/' . $data->id) . '/edit' }}" class="btn btn-sm btn-warning"><i
+                                        class="bi bi-pencil-square"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     <script>
         // jika tombol hapus ditekan, generate alamat URL untuk proses hapus

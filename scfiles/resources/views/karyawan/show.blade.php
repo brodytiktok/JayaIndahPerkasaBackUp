@@ -31,6 +31,10 @@
                         <td>{{ $karyawan->nama_lengkap }}</td>
                     </tr>
                     <tr>
+                        <th>Golongan</th>
+                        <td>{{ $karyawan->gol->golongan }}</td>
+                    </tr>
+                    <tr>
                         <th>Jabatan</th>
                         <td>{{ $karyawan->jabatan->jabatan }}</td>
                     </tr>
@@ -50,7 +54,10 @@
                         <th>Nomor Telepon</th>
                         <td>{{ $karyawan->nomor_telepon }}</td>
                     </tr>
-
+                    <tr>
+                        <th>Penghasilan</th>
+                        <td>{{ $karyawan->gol->penghasilan }}</td>
+                    </tr>
                 </thead>
 
 

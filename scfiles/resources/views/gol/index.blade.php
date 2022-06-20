@@ -21,24 +21,24 @@
                 </div>
             @endif
             <table id="example1" class="table table-bordered table-hover">
-                <a href="{{ url('status/create') }}" class="btn btn-primary"><i class="bi bi-plus-square"></i></a>
+                <a href="{{ url('gol/create') }}" class="btn btn-primary"><i class="bi bi-plus-square"></i></a>
                 <thead>
                     <tr class="text-center" style="font-size: 13px;">
-                        <th>ID</th>
-                        <th>Status</th>
+                        <th>Golongan</th>
+                        <th>Penghasilan</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($status as $data)
+                    @foreach ($gol as $data)
                         <tr>
-                            <td>{{ $data->id }}</td>
-                            <td>{{ $data->status }}</td>
+                            <td>{{ $data->golongan }}</td>
+                            <td>{{ $data->penghasilan }}</td>
                             <td class="text-center">
-                                <a href="{{ url('status/' . $data->id) . '/edit' }}" class="btn btn-sm btn-warning"><i
+                                <a href="{{ url('gol/' . $data->id) . '/edit' }}" class="btn btn-sm btn-warning"><i
                                         class="bi bi-pencil-square"></i></a>
                                 <button class="btn btn-sm btn-danger btn-hapus" data-id="{{ $data->id }}"
-                                    data-nama="{{ $data->status }}" data-toggle="modal" data-target="#deleteModal"><i
+                                    data-nama="{{ $data->golongan }}" data-toggle="modal" data-target="#deleteModal"><i
                                         class="bi bi-x-circle-fill"></i></button>
                             </td>
 
@@ -79,10 +79,10 @@
         // id disini adalah id prodi
         $('.btn-hapus').click(function() {
             let id = $(this).attr('data-id');
-            $('#formDelete').attr('action', '/status/' + id);
+            $('#formDelete').attr('action', '/gol/' + id);
 
-            let nama = $(this).attr('data-nama');
-            $('#mb-konfirmasi').text("Apakah Anda yakin ingin menghapus data Status : " + nama + " ?");
+            let gol = $(this).attr('data-nama');
+            $('#mb-konfirmasi').text("Apakah Anda yakin ingin menghapus Golongan : " + gol + " ?");
 
         })
 

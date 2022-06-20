@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\PekerjaController;
+use App\Http\Controllers\GolController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\DashboardController;
@@ -32,8 +32,8 @@ Route::resource('barang', BarangController::class)->middleware(['auth']);
 Route::resource('karyawan', KaryawanController::class)->middleware(['auth']);
 /* Resource Jabatan untuk akses semuanya */
 Route::resource('jabatan', JabatanController::class)->middleware(['auth']);
-/* Resource Pekerja untuk akses semuanya */
-Route::resource('pekerja', PekerjaController::class)->middleware(['auth']);
+/* Resource Gol untuk akses semuanya */
+Route::resource('gol', GolController::class)->middleware(['auth']);
 /* Resource Order untuk akses semuanya */
 Route::resource('order', OrderController::class)->middleware(['auth']);
 /* Resource Stat untuk akses semuanya */

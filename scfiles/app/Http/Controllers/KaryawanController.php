@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use App\Models\Jabatan;
+use App\Models\Gol;
 use Illuminate\Support\Facades\DB;
 
 class KaryawanController extends Controller
 {
     public function select(){
         // fungsi select untuk memanggil jumlah karyawan ke dashboard
-        $karyawans = DB::table('karyawans')->count('nama_lengkap');
+        $karyawans = DB::table('karyawans')->count('nama_karyawan');
         return $karyawans;
     }
     /**
@@ -22,8 +23,8 @@ class KaryawanController extends Controller
     public function index()
     {
         //
-        $karyawans = Karyawan::all();
-        return view('karyawan.index')->with('karyawans',$karyawans);
+        $karyawan = Karyawan::all();
+        return view('karyawan.index')->with('karyawan',$karyawan);
     }
 
     /**
@@ -34,10 +35,11 @@ class KaryawanController extends Controller
     public function create()
     {
         //
-        $karyawans = Karyawan::all();
+        $karyawan = Karyawan::all();
         //Controller lainny bisa diambil apabila dihubungkan dengan relasi
-        $jabatans = Jabatan::all();
-        return view('karyawan.create')->with('karyawans',$karyawans)->with('jabatans',$jabatans);
+        $jabatan = Jabatan::all();
+        $gol = Gol::all();
+        return view('karyawan.create')->with('karyawan',$karyawan)->with('jabatan',$jabatan)->with('gol',$gol);
     }
 
     /**
@@ -48,11 +50,12 @@ class KaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //// request
+        //
         $validateData = $request->validate([
             'foto' => 'required|file|image|max:5000',
-            'nama_lengkap' => 'required',
+            'nama_karyawan' => 'required',
             'jabatan_id' => 'required',
+            'gol_id' => 'required',
             'tanggal_lahir' => 'required',
             'tempat_lahir' => 'required',
             'alamat_lengkap' => 'required',
@@ -67,8 +70,9 @@ class KaryawanController extends Controller
         // validasi data
         $karyawan = new Karyawan();
         $karyawan->foto = $rename_file;
-        $karyawan->nama_lengkap = $validateData['nama_lengkap'];
+        $karyawan->nama_karyawan = $validateData['nama_karyawan'];
         $karyawan->jabatan_id = $validateData['jabatan_id'];
+        $karyawan->gol_id = $validateData['gol_id'];
         $karyawan->tanggal_lahir = $validateData['tanggal_lahir'];
         $karyawan->tempat_lahir = $validateData['tempat_lahir'];
         $karyawan->alamat_lengkap = $validateData['alamat_lengkap'];
@@ -82,84 +86,68 @@ class KaryawanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\karyawan  $karyawan
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function show(karyawan $karyawan)
+    public function show(Karyawan $karyawan)
     {
         //
         return view('karyawan.show')->with('karyawan',$karyawan);
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\karyawan  $karyawan
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function edit(karyawan $karyawan)
+    public function edit(Karyawan $karyawan)
     {
         //
-        $karyawan = Karyawan::all();
-        $jabatans = Jabatan::all();
-        return view('karyawan.edit')->with('karyawan',$karyawan)->with('jabatans',$jabatans);
-
+        $jabatan = Jabatan::all();
+        $gol = Gol::all();
+        return view('karyawan.edit')->with('karyawan',$karyawan)->with('jabatan',$jabatan)->with('gol',$gol);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\karyawan  $karyawan
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, karyawan $karyawan)
+    public function update(Request $request, Karyawan $karyawan)
     {
         //
-        //// request
         $validateData = $request->validate([
             'foto' => 'required|file|image|max:5000',
-            'nama_lengkap' => 'required',
+            'nama_karyawan' => 'required',
             'jabatan_id' => 'required',
+            'gol_id' => 'required',
             'tanggal_lahir' => 'required',
             'tempat_lahir' => 'required',
             'alamat_lengkap' => 'required',
             'nomor_telepon' => 'required',
             
         ]);
-        // Ekstensi File Gambar
-        $ext = $request->foto->getClientOriginalExtension();
-        // Rename Nama File
-        $rename_file = 'foto-'.time().".".$ext;
-        $request->foto->storeAs('public', $rename_file);
-        // validasi data
-        $karyawan = new Karyawan();
-        $karyawan->foto = $rename_file;
-        $karyawan->nama_lengkap = $validateData['nama_lengkap'];
-        $karyawan->jabatan_id = $validateData['jabatan_id'];
-        $karyawan->tanggal_lahir = $validateData['tanggal_lahir'];
-        $karyawan->tempat_lahir = $validateData['tempat_lahir'];
-        $karyawan->alamat_lengkap = $validateData['alamat_lengkap'];
-        $karyawan->nomor_telepon = $validateData['nomor_telepon'];
-        
-        $array = (array) $prodi;
-        //save
+        $array = (array) $karyawan;
         Karyawan::where('id', $karyawan->id)->update($array);
         $request->session()->flash("infocreate", "Karyawan $karyawan->nama_karyawan telah diubah !");// simpan kembali ke table karyawans
         return redirect()->route('karyawan.index'); // redirect ke karyawan index
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\karyawan  $karyawan
+     * @param  \App\Models\Karyawan  $karyawan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(karyawan $karyawan)
+    public function destroy(Karyawan $karyawan)
     {
         //
         $karyawan->delete();
         return redirect()->route('karyawan.index')->with("infodelete", "Karyawan : $karyawan->nama_lengkap berhasil dihapus");
-
     }
 }
