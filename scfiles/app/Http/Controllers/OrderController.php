@@ -153,5 +153,7 @@ class OrderController extends Controller
     public function destroy(order $order)
     {
         //
+        $order->delete();
+        return redirect()->route('order.index')->with("infodelete", "Order : $order->nama_pelanggan berhasil dihapus");
     }
 }
