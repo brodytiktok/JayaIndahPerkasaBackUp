@@ -85,7 +85,7 @@
                             <label for="nomor telepon">Nomor Telepon</label>
                             <input type="text" class="form-control" name="nomor telepon"
                                 placeholder="masukan nomor telepon"
-                                value="{{ old('nomor_telepon') ?? $karyawan->nomor_telepon }}">>
+                                value="{{ old('nomor_telepon') ?? $karyawan->nomor_telepon }}">
                         </div>
                         <!-- /.form-group -->
                     </div>

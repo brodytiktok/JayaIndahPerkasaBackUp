@@ -65,9 +65,7 @@
         <figure class="highcharts-figure">
             <div id="container"></div>
             <p class="highcharts-description">
-                Pie charts are very popular for showing a compact overview of a
-                composition or comparison. While they can be harder to read than
-                column charts, they remain a popular choice for small datasets.
+                Tampilan Status Order
             </p>
         </figure>
         <style>
@@ -163,7 +161,7 @@
         </script>
         
     </div>
-    <h5 class="mb-2">Card with Image Overlay</h5>
+    <h5 class="mb-2">Card Items</h5>
     <div class="card card-success">
         <div class="card-body">
             <div class="row">

@@ -51,6 +51,7 @@ class GolController extends Controller
         
         //save
         $gol->save();
+        $request->session()->flash('infocreate', "Golongan : $gol->golongan berhasil ditambah");
         return redirect()->route('gol.index');
     }
 
@@ -95,7 +96,7 @@ class GolController extends Controller
         ]);
 
         Gol::where('id', $gol->id)->update($validateData);
-        $request->session()->flash('infocreate', "Data Pelanggan : $gol->golongan berhasil diubah");
+        $request->session()->flash('infocreate', "Data Golongan : $gol->golongan berhasil diubah");
         return redirect()->route('gol.index');
     }
 

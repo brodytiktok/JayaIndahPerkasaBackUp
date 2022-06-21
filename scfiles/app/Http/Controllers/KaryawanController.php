@@ -124,7 +124,7 @@ class KaryawanController extends Controller
             'nomor_telepon' => 'required',
             
         ]);
-        Karyawan::where('id', $karyawan->id)->update($karyawan);
+        Karyawan::where('id', $karyawan->id)->update($validateData);
         $request->session()->flash("infocreate", "Karyawan $karyawan->nama_karyawan telah diubah !");// simpan kembali ke table karyawans
         return redirect()->route('karyawan.index'); // redirect ke karyawan index
 

@@ -1,11 +1,11 @@
 @extends('layout.index')
 
-@section('title', 'Halaman Order')
+@section('title', 'Halaman Karyawan')
 
 @section('content')
     <div class="card card-light">
         <div class="card-header">
-            <h3 class="card-title">Add Status Order</h3>
+            <h3 class="card-title">Add Golongan</h3>
         </div>
         <!-- /.card-header -->
         <!-- form start -->
@@ -15,7 +15,7 @@
                 <div class="form-group row">
                     <label for="golongan" class="col-sm-2 col-form-label">Golongan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="golongan" placeholder="Masukan Status">
+                        <input type="text" class="form-control" name="golongan" placeholder="Masukan Golongan">
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="form-group row">
                     <label for="penghasilan" class="col-sm-2 col-form-label">Penghasilan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="penghasilan" placeholder="Masukan Status">
+                        <input type="text" class="form-control" name="penghasilan" placeholder="Masukan Penghasilan">
                     </div>
                 </div>
             </div>

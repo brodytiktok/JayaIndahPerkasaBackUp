@@ -1,12 +1,12 @@
 @extends('layout.index')
 
-@section('title', 'Halaman Order')
+@section('title', 'Halaman Karyawan')
 
 @section('content')
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Status Order</h3>
+            <h3 class="card-title">Golongan</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
