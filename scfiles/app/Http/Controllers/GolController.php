@@ -76,7 +76,7 @@ class GolController extends Controller
         //
         
         return view('gol.edit')->with('gol',$gol);
-        
+
     }
 
     /**
