@@ -15,6 +15,8 @@ class AddGolIdFieldToKaryawansTable extends Migration
     {
         Schema::table('karyawans', function (Blueprint $table) {
             //
+            $table->foreignId('gol_id')->nullable()->after('nama_karyawan')->constrained()
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -27,6 +29,8 @@ class AddGolIdFieldToKaryawansTable extends Migration
     {
         Schema::table('karyawans', function (Blueprint $table) {
             //
+            $table->dropForeign('karyawans_gol_id_foreign');
+            $table->dropColumn('gol_id');
         });
     }
 }

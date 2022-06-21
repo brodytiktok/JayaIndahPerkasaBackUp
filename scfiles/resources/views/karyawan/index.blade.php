@@ -23,7 +23,7 @@
                 <a href="{{ url('karyawan/create') }}" class="btn btn-primary"><i class="bi bi-plus-square"></i></a>
                 <thead>
                     <tr>
-                        <th>Foto</th>
+                        
                         <th>Nama Lengkap</th>
                         <th>Tanggal Lahir</th>
                         <th>Jabatan</th>
@@ -36,7 +36,7 @@
                 <tbody>
                     @foreach ($karyawan as $data)
                         <tr>
-                            <td><img src="{{ asset('storage/' . $data->foto) }}" width="40px" height="50px"></td>
+                            
                             <td><a href="{{ url('karyawan/' . $data->id) }}"> {{ $data->nama_karyawan }}</a></td>
                             <td>{{ $data->tanggal_lahir }}</td>
                             <td>{{ $data->tempat_lahir }}</td>

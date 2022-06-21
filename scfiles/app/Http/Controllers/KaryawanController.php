@@ -52,7 +52,6 @@ class KaryawanController extends Controller
     {
         //
         $validateData = $request->validate([
-            'foto' => 'required|file|image|max:5000',
             'nama_karyawan' => 'required',
             'jabatan_id' => 'required',
             'gol_id' => 'required',
@@ -62,14 +61,9 @@ class KaryawanController extends Controller
             'nomor_telepon' => 'required',
             
         ]);
-        // Ekstensi File Gambar
-        $ext = $request->foto->getClientOriginalExtension();
-        // Rename Nama File
-        $rename_file = 'foto-'.time().".".$ext;
-        $request->foto->storeAs('public', $rename_file);
+        
         // validasi data
         $karyawan = new Karyawan();
-        $karyawan->foto = $rename_file;
         $karyawan->nama_karyawan = $validateData['nama_karyawan'];
         $karyawan->jabatan_id = $validateData['jabatan_id'];
         $karyawan->gol_id = $validateData['gol_id'];
@@ -121,7 +115,6 @@ class KaryawanController extends Controller
     {
         //
         $validateData = $request->validate([
-            'foto' => 'required|file|image|max:5000',
             'nama_karyawan' => 'required',
             'jabatan_id' => 'required',
             'gol_id' => 'required',
@@ -131,8 +124,7 @@ class KaryawanController extends Controller
             'nomor_telepon' => 'required',
             
         ]);
-        $array = (array) $karyawan;
-        Karyawan::where('id', $karyawan->id)->update($array);
+        Karyawan::where('id', $karyawan->id)->update($karyawan);
         $request->session()->flash("infocreate", "Karyawan $karyawan->nama_karyawan telah diubah !");// simpan kembali ke table karyawans
         return redirect()->route('karyawan.index'); // redirect ke karyawan index
 

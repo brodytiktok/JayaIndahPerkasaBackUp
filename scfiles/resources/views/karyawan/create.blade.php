@@ -12,13 +12,6 @@
         <form action="{{ route('karyawan.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
-                <div class="form-group">
-                    <label for="foto">Foto</label>
-                    <input type="file" name="foto" id="foto" class="form-control">
-                    @error('foto')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
                 <div class="row">
                     <div class="col-md-6">
                         {{-- tanggal --}}

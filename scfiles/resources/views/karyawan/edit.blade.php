@@ -14,14 +14,6 @@
             @csrf
             @method('PATCH')
             <div class="card-body">
-                <div class="form-group">
-                    <label for="foto">Foto</label>
-                    <input type="file" name="foto" id="foto" class="form-control"
-                        value="{{ old('foto') ?? $karyawan->foto }}">
-                    @error('foto')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
                 <div class="row">
                     <div class="col-md-6">
                         {{-- tanggal --}}

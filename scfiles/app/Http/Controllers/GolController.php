@@ -74,8 +74,9 @@ class GolController extends Controller
     public function edit(Gol $gol)
     {
         //
-        $gol = Gol::all();
+        
         return view('gol.edit')->with('gol',$gol);
+        
     }
 
     /**

@@ -14,9 +14,16 @@
             @method('PATCH')
             <div class="card-body">
                 <div class="form-group row">
+                    <label for="golongan" class="col-sm-2 col-form-label">Penghasilan</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="golongan" placeholder="Masukan Golongan"
+                            value="{{ old('gol') ?? $gol->golongan }}">
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="penghasilan" class="col-sm-2 col-form-label">Penghasilan</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="penghasilan" placeholder="Masukan Status"
+                        <input type="text" class="form-control" name="penghasilan" placeholder="Masukan Penghasilan"
                             value="{{ old('gol') ?? $gol->penghasilan }}">
                     </div>
                 </div>

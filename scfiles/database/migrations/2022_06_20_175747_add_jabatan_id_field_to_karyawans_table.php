@@ -15,6 +15,8 @@ class AddJabatanIdFieldToKaryawansTable extends Migration
     {
         Schema::table('karyawans', function (Blueprint $table) {
             //
+            $table->foreignId('jabatan_id')->nullable()->after('tanggal_lahir')->constrained()
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -27,6 +29,8 @@ class AddJabatanIdFieldToKaryawansTable extends Migration
     {
         Schema::table('karyawans', function (Blueprint $table) {
             //
+            $table->dropForeign('karyawans_jabatan_id_foreign');
+            $table->dropColumn('jabatan_id');
         });
     }
 }
