@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 04:36 AM
+-- Generation Time: Jun 24, 2022 at 04:10 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.26
 
@@ -40,13 +40,6 @@ CREATE TABLE `barangs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `barangs`
---
-
-INSERT INTO `barangs` (`id`, `kode_barang`, `tanggal`, `nama_barang`, `satuan`, `harga_jual`, `stok_awal`, `stok_akhir`, `created_at`, `updated_at`) VALUES
-(1, 'L2-P22', '2000-10-16', 'Led Lights', 'buah', 200000, 10, 20, '2022-06-20 18:12:51', '2022-06-20 18:12:51');
-
 -- --------------------------------------------------------
 
 --
@@ -82,7 +75,9 @@ CREATE TABLE `gols` (
 --
 
 INSERT INTO `gols` (`id`, `golongan`, `penghasilan`, `created_at`, `updated_at`) VALUES
-(1, 'A2', 9500000, '2022-06-20 18:13:10', '2022-06-20 18:32:49');
+(1, 'A1', 12500000, '2022-06-20 20:06:24', '2022-06-20 20:06:31'),
+(2, 'A2', 9000000, '2022-06-20 20:08:37', '2022-06-20 20:08:37'),
+(3, 'B1', 500000, '2022-06-23 19:06:26', '2022-06-23 19:06:26');
 
 -- --------------------------------------------------------
 
@@ -102,11 +97,8 @@ CREATE TABLE `jabatans` (
 --
 
 INSERT INTO `jabatans` (`id`, `jabatan`, `created_at`, `updated_at`) VALUES
-(1, 'Supervisior', '2022-06-20 18:16:37', '2022-06-20 18:16:37'),
-(2, 'Direktur', '2022-06-20 18:16:41', '2022-06-20 18:16:41'),
-(3, 'Kasir', '2022-06-20 18:16:46', '2022-06-20 18:16:46'),
-(4, 'Database Enginer', '2022-06-20 18:16:55', '2022-06-20 18:16:55'),
-(5, 'Kasir', '2022-06-20 18:17:09', '2022-06-20 18:17:09');
+(1, 'Direktur', '2022-06-20 20:10:19', '2022-06-20 20:10:19'),
+(2, 'Supervisior', '2022-06-23 19:07:04', '2022-06-23 19:07:04');
 
 -- --------------------------------------------------------
 
@@ -132,7 +124,8 @@ CREATE TABLE `karyawans` (
 --
 
 INSERT INTO `karyawans` (`id`, `nama_karyawan`, `gol_id`, `tanggal_lahir`, `jabatan_id`, `tempat_lahir`, `alamat_lengkap`, `nomor_telepon`, `created_at`, `updated_at`) VALUES
-(1, 'Kevin Pratama', 1, '2000-10-16', 1, 'Jakarta', 'Jalan Mayor Ruslan No 829', '082177979924', '2022-06-20 18:18:37', '2022-06-20 18:18:37');
+(1, 'Stephanie', 1, '2002-04-09', 1, 'Palembang', 'Jalan Papera No. 2217', '089507022116', '2022-06-20 20:10:59', '2022-06-23 19:06:38'),
+(2, 'Kevin Pratama', 2, '2000-10-16', 2, 'Jakarta', 'Jalan Mayor Ruslan No.829', '082177979924', '2022-06-23 19:07:29', '2022-06-23 19:07:41');
 
 -- --------------------------------------------------------
 
@@ -151,19 +144,19 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(14, '2014_10_12_000000_create_users_table', 1),
-(15, '2014_10_12_100000_create_password_resets_table', 1),
-(16, '2019_08_19_000000_create_failed_jobs_table', 1),
-(17, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(18, '2022_05_29_161525_create_barangs_table', 1),
-(19, '2022_05_29_162358_create_jabatans_table', 1),
-(20, '2022_05_31_154309_create_orders_table', 1),
-(21, '2022_06_06_141129_create_statuses_table', 1),
-(22, '2022_06_06_141615_add_status_id_field_to_orders_table', 1),
-(23, '2022_06_20_160248_create_karyawans_table', 1),
-(24, '2022_06_20_172735_create_gols_table', 1),
-(25, '2022_06_20_175735_add_gol_id_field_to_karyawans_table', 1),
-(26, '2022_06_20_175747_add_jabatan_id_field_to_karyawans_table', 1);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_05_29_161525_create_barangs_table', 1),
+(6, '2022_05_29_162358_create_jabatans_table', 1),
+(7, '2022_05_31_154309_create_orders_table', 1),
+(8, '2022_06_06_141129_create_statuses_table', 1),
+(9, '2022_06_06_141615_add_status_id_field_to_orders_table', 1),
+(10, '2022_06_20_160248_create_karyawans_table', 1),
+(11, '2022_06_20_172735_create_gols_table', 1),
+(12, '2022_06_20_175735_add_gol_id_field_to_karyawans_table', 1),
+(13, '2022_06_20_175747_add_jabatan_id_field_to_karyawans_table', 1);
 
 -- --------------------------------------------------------
 
@@ -190,8 +183,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `nama_pelanggan`, `no_order`, `tanggal_pemesanan`, `tanggal_terima`, `items`, `metode`, `statuse_id`, `biaya`, `created_at`, `updated_at`) VALUES
-(1, 'Kevin Pratama', NULL, '2022-12-17', '2022-12-18', 20, 'Kredit-BCA', 1, 200000, '2022-06-20 18:15:31', '2022-06-20 18:15:31'),
-(2, 'Kevin Pratama', NULL, '2022-10-20', '2022-10-21', 20, 'COD', 2, 200000, '2022-06-20 18:34:43', '2022-06-20 18:34:54');
+(1, 'Kevin', NULL, '2022-10-16', '2022-10-18', 15, 'COD', 2, 5000000, '2022-06-20 20:09:47', '2022-06-20 20:09:52'),
+(2, 'Kevin', NULL, '2022-10-10', '2022-10-11', 15, 'Kredit - BCA', 1, 5000000, '2022-06-20 21:02:48', '2022-06-20 21:02:48'),
+(3, 'Kevin', NULL, '2022-10-22', '2022-10-23', 12, 'Kredit - BCA', 1, 5000000, '2022-06-20 21:04:20', '2022-06-20 21:04:20');
 
 -- --------------------------------------------------------
 
@@ -241,9 +235,9 @@ CREATE TABLE `statuses` (
 --
 
 INSERT INTO `statuses` (`id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Proses', '2022-06-20 18:14:32', '2022-06-20 18:14:32'),
-(2, 'Gagal', '2022-06-20 18:14:39', '2022-06-20 18:14:39'),
-(3, 'Update', '2022-06-20 18:14:44', '2022-06-20 18:14:44');
+(1, 'Proses', '2022-06-20 20:04:12', '2022-06-20 20:04:18'),
+(2, 'Batal', '2022-06-20 20:04:24', '2022-06-20 21:04:38'),
+(3, 'Update', '2022-06-23 19:06:45', '2022-06-23 19:06:45');
 
 -- --------------------------------------------------------
 
@@ -267,7 +261,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'kevin', 'kevinpratama@gmail.com', NULL, '$2y$10$D1zFVfzRMlqfSZdIvb/85.gVn.mQhc049k6poyipBgpOZOalbC5zO', NULL, '2022-06-20 18:11:37', '2022-06-20 18:11:37');
+(1, 'kevin', 'kevinpratama161000@gmail.com', NULL, '$2y$10$2T/wlCbA/ZU40rFVf7cI0eZPKwNEwIoCziIUXHtHolpQ3NyQUaNKC', 'eFqHDG7rlRLCyJua5wi7nSz8tqZnUKZrkzHLudtOoWJyAuqHojXuZOWMSms4', '2022-06-20 20:02:03', '2022-06-20 20:02:03');
 
 --
 -- Indexes for dumped tables
@@ -366,31 +360,31 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `gols`
 --
 ALTER TABLE `gols`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `jabatans`
 --
 ALTER TABLE `jabatans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `karyawans`
 --
 ALTER TABLE `karyawans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
